@@ -11,15 +11,31 @@
 </head>
 <body>
     <div class="container">
-        <div class="box-container">
-            <div id="input-container">
-                <input id="inputEmail" type="email" autocomplete="off" placeholder="Email"><i class='bx bxs-envelope'></i>
-                <input id="inputPassword" type="password" autocomplete="off" placeholder="Password"><i class='bx bxs-lock-alt'></i>
+        <div id="input-container">
+            <div class="input-wrapper">
+                <input id="inputEmail" type="email" autocomplete="off" placeholder="Email">
+                <i class='bx bxs-envelope'></i>
+
+                <div class="errorMessage">
+                    <p id="errorMessageEmail"><i class='bx bx-info-circle active'></i>Email inválido</p>
+                </div>
+            </div>
+        
+            <div class="input-wrapper">
+                <input id="inputPassword" type="password" autocomplete="off" placeholder="Password">
+                <i class='bx bxs-lock-alt'></i>
+
+                <div class="errorMessage">
+                    <p id="errorMessagePassword"><i class='bx bx-info-circle active'></i>Ingrese una contraseña válida</p>
+                </div>
             </div>
 
-            <p>You don't have an account? <a href="../views/">Join</a></p>
-
             <button>Log in</button>
+
+            <div id="JoinLog">
+                <p id="textJoinLog">You don't have an account?<a href="../views/" id="linkJoinLog" class="shadow">Join</a></p>
+            </div>
+
         </div>
     </div>
 </body>
