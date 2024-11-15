@@ -9,31 +9,71 @@
     <script src="../scripts/main.js" defer></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-    <div class="container">
-        <div id="input-container">
+    <div id="log-container" class="container active blur-in">
+        <img src="../assets/images/icons/profile-icon.png">
+        <h2>Log In</h2>
+        <div class="input-container">
             <div class="input-wrapper">
-                <input id="inputEmail" type="email" autocomplete="off" placeholder="Email">
+                <input id="inputEmailLog" type="email" autocomplete="off" placeholder="Email">
                 <i class='bx bxs-envelope'></i>
 
                 <div class="errorMessage">
-                    <p id="errorMessageEmail"><i class='bx bx-info-circle active'></i>Email inválido</p>
+                    <p id="errorMessageEmailLog"><i class='bx bx-info-circle active'></i>Email inválido</p>
                 </div>
             </div>
         
             <div class="input-wrapper">
-                <input id="inputPassword" type="password" autocomplete="off" placeholder="Password">
-                <i class='bx bxs-lock-alt'></i>
+                <input id="inputPasswordLog" type="password" autocomplete="off" placeholder="Password">
+                <i class='bx bxs-lock-alt' onclick="showHidePassword()"></i>
 
                 <div class="errorMessage">
-                    <p id="errorMessagePassword"><i class='bx bx-info-circle active'></i>Ingrese una contraseña válida</p>
+                    <p id="errorMessagePasswordLog"><i class='bx bx-info-circle'></i>Ingrese una contraseña válida</p>
                 </div>
             </div>
 
             <button>Log in</button>
 
-            <div id="JoinLog">
-                <p id="textJoinLog">You don't have an account?<a href="../views/" id="linkJoinLog" class="shadow">Join</a></p>
+            <div class="RegLog">
+                <p class="textRegLog">You don't have an account?<p class="linkRegLog shadow" onclick="redirectToReg()">Register</p></p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="reg-container" class="container reg-container">
+        <img src="../assets/images/icons/profile-icon.png">
+        <h2>Register now</h2>
+        <div class="input-container">
+            <div class="input-wrapper">
+                <input id="inputName" type="text" autocomplete="off" placeholder="Full Name">
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-wrapper">
+                <input id="inputEmailReg" type="email" autocomplete="off" placeholder="Email">
+                <i class='bx bxs-envelope'></i>
+
+                <div class="errorMessage">
+                    <p id="errorMessageEmailReg"><i class='bx bx-info-circle'></i>Email inválido</p>
+                </div>
+            </div>
+        
+            <div class="input-wrapper">
+                <input id="inputPasswordReg" type="password" autocomplete="off" placeholder="Password">
+                <i class='bx bxs-lock-alt' onclick="showHidePassword()"></i>
+
+                <div class="errorMessage">
+                    <p id="errorMessagePasswordReg"><i class='bx bx-info-circle active'></i>Ingrese una contraseña válida</p>
+                </div>
+            </div>
+
+            <button id="buttonLog">Log in</button>
+            <button id="buttonReg">Register now</button>
+
+            <div class="RegLog">
+                <p class="textRegLog">Do you have an account?<p class="linkRegLog shadow" onclick="redirectToLog()">Log in</p></p>
             </div>
 
         </div>

@@ -31,21 +31,81 @@ body::before {
 }
 
 .container {
-    min-width: 360px;
-    height: 400px;
+    min-width: 340px;
+    height: 450px;
     background-color: transparent;
     backdrop-filter: blur(20px);
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, .1);
     box-shadow: 0px 0px 10px 1px black;
+    user-select: none;
 }
 
-#input-container {
+#log-container {
+    position: absolute;
+    display: none;
+}
+
+#reg-container {
+    position: absolute;
+    display: none;
+    height: 560px;
+}
+
+#log-container.active, #reg-container.active {
+    display: flex;
+}
+
+.input-container {
     position: relative;
     width: 85%;
+}
+
+.blur-in {
+    animation:blur-in 0.6s linear both
+}
+
+@keyframes blur-in {
+    0% {
+        filter: blur(12px);
+        opacity: 0
+    }
+    
+    100% {
+        filter: blur(0);
+        opacity: 1
+    }
+}
+
+.blur-out {
+    animation: blur-out 0.6s linear both
+}
+
+@keyframes blur-out {
+    0% {
+        filter: blur(.01px);
+    }
+    
+    100% {
+        filter :blur(12px);
+        opacity: 0
+    }
+}
+
+img {
+    width: 80px;
+    height: 80px;
+}
+
+h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 750;
+    color: white;
+    margin: 10px 0px;
 }
 
 .input-wrapper {
@@ -80,7 +140,7 @@ button {
     border-radius: 20px;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     cursor: pointer;
     transition: .2s;
 }
@@ -92,21 +152,44 @@ button:hover {
     color: rgb(30, 30, 30)
 }
 
-.bxs-envelope, .bxs-lock-alt  {
+#buttonLog {
+    display: none;
+}
+
+#buttonReg {
+    display: none;
+}
+
+#buttonLog.active {
+    display: block;
+}
+
+#buttonReg.active {
+    display: block;
+}
+
+.bxs-user, .bxs-envelope, .bxs-lock-alt  {
     position: absolute;
     font-size: 25px;
     right: 15px;
+}
+
+.bxs-user {
+    top: 50%;
+    transform: translateY(-50%);
     pointer-events: none;
 }
 
 .bxs-envelope {
     top: 50%;
     transform: translateY(-50%);
+    pointer-events: none;
 }
 
 .bxs-lock-alt  {
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 
 p {
@@ -140,27 +223,28 @@ p {
     text-shadow: 0px 0px 10px rgb(255, 255, 255);
 }
 
-#JoinLog {
+.RegLog {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-bottom: 0px;
 }
 
-#textJoinLog {
+.textRegLog {
     font-weight: 500;
 }
 
-#linkJoinLog {
+.linkRegLog {
     margin: 0px 0px 0px 5px;
-    text-decoration: none;
-    font-weight: 400;
+    font-weight: 420;
+    cursor: pointer;
 }
 
-#linkJoinLog:hover {
+.linkRegLog:hover {
     text-shadow: 0px 0px 5px 0px white;
 }
 
-#textJoinLog, #linkJoinLog {
+.textRegLog, .linkRegLog {
     font-size: 20px;
     color: white;
 }

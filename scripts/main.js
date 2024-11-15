@@ -1,25 +1,90 @@
-const emailInputEl = document.getElementById('inputEmail');
-const passwordInputEl = document.getElementById('inputPassword');
-const errorEmailEl = document.getElementById('errorMessageEmail').parentElement;
-const errorPassEl = document.getElementById('errorMessagePassword').parentElement;
+const logContainer = document.getElementById('log-container');
+const emailInputLogEl = document.getElementById('inputEmailLog');
+const passwordInputLogEl = document.getElementById('inputPasswordLog');
+const errorEmailLogEl = document.getElementById('errorMessageEmailLog').parentElement;
+const errorPassLogEl = document.getElementById('errorMessagePasswordLog').parentElement;
+const buttonLog = document.getElementById('buttonLog');
+
+const RegContainer = document.getElementById('reg-container');
+const emailInputRegEl = document.getElementById('inputEmailReg');
+const passwordInputRegEl = document.getElementById('inputPasswordReg');
+const errorEmailRegEl = document.getElementById('errorMessageEmailReg').parentElement;
+const errorPassRegEl = document.getElementById('errorMessagePasswordReg').parentElement;
+const buttonReg = document.getElementById('buttonReg');
 
 function validateEmailAndPassword() {
-    if(emailInputEl.value === 'admin' || emailInputEl.value === '') {
-        errorEmailEl.classList.remove('active');
+    if(emailInputLogEl.value === 'admin' || emailInputLogEl.value === '') {
+        errorEmailLogEl.classList.remove('active');
     }
 
     else {
-        errorEmailEl.classList.add('active');
+        errorEmailLogEl.classList.add('active');
     }
 
-    if(passwordInputEl.value === 'admin' || passwordInputEl.value === '') {
-        errorPassEl.classList.remove('active');
+    if(passwordInputLogEl.value === 'admin' || passwordInputLogEl.value === '') {
+        errorPassLogEl.classList.remove('active');
     }
 
     else {
-        errorPassEl.classList.add('active');
+        errorPassLogEl.classList.add('active');
+    }
+
+    if(passwordInputRegEl.value.length > 8 || passwordInputRegEl.value === '') {
+        errorPassRegEl.classList.remove('active');
+    }
+
+    else {
+        errorPassRegEl.classList.add('active');
     }
 }
 
-emailInputEl.addEventListener('input', validateEmailAndPassword);
-passwordInputEl.addEventListener('input', validateEmailAndPassword);
+emailInputLogEl.addEventListener('input', validateEmailAndPassword);
+passwordInputLogEl.addEventListener('input', validateEmailAndPassword);
+
+passwordInputRegEl.addEventListener('input', validateEmailAndPassword);
+
+function showHidePassword() {
+    if(passwordInputLogEl.type === 'password' || passwordInputRegEl.type === 'password') {
+        passwordInputLogEl.type = 'text';
+        passwordInputRegEl.type = 'text';
+    }
+
+    else {
+        passwordInputLogEl.type = 'password';
+        passwordInputRegEl.type = 'password';
+    }
+}
+
+function redirectToLog() {
+    RegContainer.classList.add('blur-out');
+
+    setTimeout(() => {
+        RegContainer.classList.remove('active', 'blur-out');
+        logContainer.classList.add('active');
+        logContainer.classList.add('blur-in');
+
+        buttonReg.classList.remove('active');
+        buttonLog.classList.add('active');
+
+        setTimeout(() => {
+            logContainer.classList.remove('blur-in');
+        }, 600);
+    }, 600);
+}
+
+function redirectToReg() {
+    logContainer.classList.add('blur-out');
+    
+    setTimeout(() => {
+        logContainer.classList.remove('active', 'blur-out');
+        RegContainer.classList.add('active');
+        RegContainer.classList.add('blur-in');
+
+        buttonReg.classList.add('active');
+        buttonLog.classList.remove('active');
+
+        setTimeout(() => {
+            RegContainer.classList.remove('blur-in');
+        }, 600);
+    }, 600);
+}
