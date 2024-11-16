@@ -6,6 +6,7 @@ const errorPassLogEl = document.getElementById('errorMessagePasswordLog').parent
 const buttonLog = document.getElementById('buttonLog');
 
 const RegContainer = document.getElementById('reg-container');
+const userRegEl = document.getElementById('inputName');
 const emailInputRegEl = document.getElementById('inputEmailReg');
 const passwordInputRegEl = document.getElementById('inputPasswordReg');
 const errorEmailRegEl = document.getElementById('errorMessageEmailReg').parentElement;
@@ -63,6 +64,11 @@ function redirectToLog() {
         logContainer.classList.add('active');
         logContainer.classList.add('blur-in');
 
+        userRegEl.value = ''
+        emailInputRegEl.value = '';
+        passwordInputRegEl.value = '';
+        validateEmailAndPassword();
+
         buttonReg.classList.remove('active');
         buttonLog.classList.add('active');
 
@@ -79,6 +85,10 @@ function redirectToReg() {
         logContainer.classList.remove('active', 'blur-out');
         RegContainer.classList.add('active');
         RegContainer.classList.add('blur-in');
+
+        emailInputLogEl.value = '';
+        passwordInputLogEl.value = '';
+        validateEmailAndPassword();
 
         buttonReg.classList.add('active');
         buttonLog.classList.remove('active');
